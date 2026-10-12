@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameZone - Cyberpunk Gaming Dashboard & Community Portal</title>
+  <meta name="description" content="Ultimate responsive gaming dashboard featuring live statistics, match history trends, game launchers, leaderboards, and friend activity.">
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app-wrapper">
+  <!-- ==========================================
+       1. DESKTOP SIDEBAR (Fixed Left Navigation)
+       ========================================== -->
+  <aside class="sidebar d-none d-lg-flex">
+    <div class="brand-header">
+      <div class="brand-logo-icon">
+        <i class="bi bi-controller"></i>
+      </div>
+      <div>
+        <h1 class="brand-title">GAMEZONE</h1>
+        <span class="text-muted font-subhead" style="font-size: 0.75rem; letter-spacing: 1px;">PRO DASHBOARD</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main Menu</div>
+      <a href="#" class="sidebar-link active" id="nav-dashboard">
+        <i class="bi bi-grid-1x2-fill"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="sidebar-link" id="nav-my-games">
+        <i class="bi bi-joystick"></i>
+        <span>My Games</span>
+        <span class="sidebar-badge bg-primary text-white">14</span>
+      </a>
+      <a href="#" class="sidebar-link" id="nav-leaderboard">
+        <i class="bi bi-trophy-fill"></i>
+        <span>Leaderboard</span>
+      </a>
+      <a href="#" class="sidebar-link" id="nav-achievements">
+        <i class="bi bi-award-fill"></i>
+        <span>Achievements</span>
+      </a>
+
+      <div class="nav-section-label mt-3">Community & Shop</div>
+      <a href="#" class="sidebar-link" id="nav-store">
+        <i class="bi bi-bag-fill"></i>
+        <span>Game Store</span>
+        <span class="sidebar-badge bg-danger text-white">HOT</span>
+      </a>
+      <a href="#" class="sidebar-link" id="nav-friends">
+        <i class="bi bi-people-fill"></i>
+        <span>Friends</span>
+        <span class="sidebar-badge bg-success text-white">8 Online</span>
+      </a>
+      <a href="#" class="sidebar-link" id="nav-settings">
+        <i class="bi bi-gear-fill"></i>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <!-- User Profile Footer in Sidebar -->
+    <div class="sidebar-user-card">
+      <div class="avatar-wrapper">
+        <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=150&auto=format&fit=crop&q=80" alt="Player Avatar" class="avatar-img">
+        <div class="status-dot online"></div>
+      </div>
+      <div class="flex-grow-1 overflow-hidden">
+        <div class="fw-bold text-truncate" style="font-size: 0.9rem;">Alex "Vortex"</div>
+        <div class="text-muted" style="font-size: 0.75rem;">Diamond II Rank</div>
+      </div>
+      <button class="btn btn-sm text-secondary p-0" title="Logout"><i class="bi bi-box-arrow-right fs-5"></i></button>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       2. MOBILE / TABLET OFFCANVAS SIDEBAR
+       ========================================== -->
+  <div class="offcanvas offcanvas-start offcanvas-gaming" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+    <div class="offcanvas-header border-bottom border-secondary border-opacity-25">
+      <div class="d-flex align-items-center gap-2">
+        <div class="brand-logo-icon" style="width:36px; height:36px; font-size:1.1rem;">
+          <i class="bi bi-controller"></i>
+        </div>
+        <h5 class="offcanvas-title font-display text-white" id="offcanvasSidebarLabel">GAMEZONE</h5>
+      </div>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0 d-flex flex-column">
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main Menu</div>
+        <a href="#" class="sidebar-link active">
+          <i class="bi bi-grid-1x2-fill"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-joystick"></i>
+          <span>My Games</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-trophy-fill"></i>
+          <span>Leaderboard</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-award-fill"></i>
+          <span>Achievements</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-bag-fill"></i>
+          <span>Store</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-people-fill"></i>
+          <span>Friends</span>
+        </a>
+        <a href="#" class="sidebar-link">
+          <i class="bi bi-gear-fill"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-user-card m-3">
+        <div class="avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=150&auto=format&fit=crop&q=80" alt="Player Avatar" class="avatar-img">
+          <div class="status-dot online"></div>
+        </div>
+        <div class="flex-grow-1 overflow-hidden">
+          <div class="fw-bold text-truncate">Alex "Vortex"</div>
+          <div class="text-muted" style="font-size: 0.75rem;">Diamond II Rank</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       3. MAIN CONTENT AREA WRAPPER
+       ========================================== -->
+  <div class="main-wrapper">
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+      <div class="navbar-left">
+        <!-- Sidebar Toggle for Mobile/Tablet -->
+        <button class="sidebar-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-label="Toggle Navigation">
+          <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Search Bar -->
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input type="text" id="global-search-input" class="search-input" placeholder="Search games, players, tournaments...">
+        </div>
+      </div>
+
+      <!-- Navbar Right Stats & Profile -->
+      <div class="navbar-right">
+        <!-- In-game Currency Pill -->
+        <div class="nav-pill-item d-none d-sm-flex" title="GameZone Coins">
+          <i class="bi bi-coin coin-icon"></i>
+          <span class="text-amber">12,450</span>
+        </div>
+
+        <!-- Player Level Badge -->
+        <div class="nav-pill-item d-none d-md-flex" title="Current Level">
+          <i class="bi bi-lightning-charge-fill level-icon"></i>
+          <span>LVL <strong class="text-cyan">24</strong></span>
+        </div>
+
+        <!-- Notification Bell Dropdown -->
+        <div class="dropdown">
+          <button class="nav-icon-btn" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
+            <i class="bi bi-bell-fill"></i>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark-custom" aria-labelledby="notificationDropdown">
+            <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary border-opacity-25">
+              <span class="fw-bold font-subhead" style="font-size: 0.9rem;">Notifications</span>
+              <span class="badge bg-primary rounded-pill" style="font-size: 0.65rem;">3 NEW</span>
+            </div>
+            <div class="p-1">
+              <div class="notification-item">
+                <i class="bi bi-trophy text-amber fs-5"></i>
+                <div>
+                  <div class="fw-semibold" style="font-size: 0.82rem;">Achievement Unlocked!</div>
+                  <div class="text-muted" style="font-size: 0.75rem;">Completed 'Sharpshooter V' in Neon Blaze</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <i class="bi bi-person-plus text-cyan fs-5"></i>
+                <div>
+                  <div class="fw-semibold" style="font-size: 0.82rem;">Squad Invite received</div>
+                  <div class="text-muted" style="font-size: 0.75rem;">Valkyrie_X invited you to Duo Match</div>
+                </div>
+              </div>
+              <div class="notification-item">
+                <i class="bi bi-controller text-success fs-5"></i>
+                <div>
+                  <div class="fw-semibold" style="font-size: 0.82rem;">Tournament Match Ready</div>
+                  <div class="text-muted" style="font-size: 0.75rem;">Arcane Arena Finals start in 15 mins</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Profile Menu -->
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle text-white" id="userProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="avatar-wrapper" style="width:36px; height:36px;">
+              <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="avatar-img">
+            </div>
+            <span class="fw-semibold d-none d-xl-inline" style="font-size: 0.9rem;">Alex "Vortex"</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark-custom" aria-labelledby="userProfileDropdown">
+            <li><a class="dropdown-item text-white py-2" href="#"><i class="bi bi-person me-2 text-cyan"></i> My Profile</a></li>
+            <li><a class="dropdown-item text-white py-2" href="#"><i class="bi bi-shield-check me-2 text-purple"></i> Security & Privacy</a></li>
+            <li><a class="dropdown-item text-white py-2" href="#"><i class="bi bi-sliders me-2 text-amber"></i> Preferences</a></li>
+            <li><hr class="dropdown-divider border-secondary border-opacity-25"></li>
+            <li><a class="dropdown-item text-danger py-2" href="#"><i class="bi bi-box-arrow-right me-2"></i> Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Main Body Container -->
+    <main class="dashboard-content">
+      
+      <!-- Welcome Header Banner -->
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-3">
+        <div>
+          <h1 class="h3 font-display text-white mb-1">WELCOME BACK, VORTEX 👋</h1>
+          <p class="text-secondary mb-0" style="font-size: 0.9rem;">Here is your live combat activity and tournament summary for today.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-cyan font-subhead fw-bold text-cyan btn-sm px-3" style="border-color: var(--neon-cyan); border-radius: 8px;" id="btn-quick-party">
+            <i class="bi bi-plus-lg me-1"></i> CREATE PARTY
+          </button>
+          <button class="btn btn-cyan font-subhead fw-bold btn-sm px-3" style="background: linear-gradient(135deg, var(--neon-cyan), #0284c7); border:none; color:#000; border-radius: 8px;" id="btn-find-match">
+            <i class="bi bi-play-fill me-1 fs-6"></i> FIND MATCH
+          </button>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           4. ROW OF 4 STAT CARDS (Responsive Grid)
+           ========================================== -->
+      <div class="row g-3 mb-4">
+        <!-- Stat Card 1: Total Playtime -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="gaming-card stat-card-cyan">
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="stat-label">Total Playtime</span>
+              <div class="stat-card-icon icon-cyan">
+                <i class="bi bi-clock-history"></i>
+              </div>
+            </div>
+            <div class="stat-value text-white">128.4 <span style="font-size: 1rem;" class="text-secondary font-body fw-normal">hrs</span></div>
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span class="trend-indicator trend-up">
+                <i class="bi bi-triangle-fill" style="font-size:0.6rem;"></i> ▲ 14%
+              </span>
+              <span class="text-muted" style="font-size: 0.75rem;">vs last week</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat Card 2: Games Won -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="gaming-card stat-card-emerald">
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="stat-label">Victory Royales</span>
+              <div class="stat-card-icon icon-emerald">
+                <i class="bi bi-trophy-fill"></i>
+              </div>
+            </div>
+            <div class="stat-value text-white">342 <span style="font-size: 1rem;" class="text-secondary font-body fw-normal">Wins</span></div>
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span class="trend-indicator trend-up">
+                <i class="bi bi-triangle-fill" style="font-size:0.6rem;"></i> ▲ 8.2%
+              </span>
+              <span class="text-muted" style="font-size: 0.75rem;">68.4% Win Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat Card 3: Current Rank -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="gaming-card stat-card-purple">
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="stat-label">Current Competitive Rank</span>
+              <div class="stat-card-icon icon-purple">
+                <i class="bi bi-shield-shaded"></i>
+              </div>
+            </div>
+            <div class="stat-value text-white">Diamond II</div>
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span class="trend-indicator trend-up" style="color:var(--neon-purple); background:rgba(168,85,247,0.12);">
+                <i class="bi bi-award me-1"></i> Top 3.2%
+              </span>
+              <span class="text-muted" style="font-size: 0.75rem;">2,850 RP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat Card 4: XP Level Progress -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="gaming-card stat-card-amber">
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="stat-label">Level 25 XP Progress</span>
+              <div class="stat-card-icon icon-amber">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+            </div>
+            <div class="stat-value text-white">3,750 / <span style="font-size:1.1rem; color:var(--text-muted);">5k XP</span></div>
+            <div class="gaming-progress">
+              <div class="gaming-progress-bar" id="xp-progress-bar" style="width: 75%;"></div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span class="text-amber font-subhead fw-bold" style="font-size: 0.8rem;">75% COMPLETED</span>
+              <span class="text-muted" style="font-size: 0.75rem;">1,250 XP needed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           5. CHARTS SECTION (2 Columns)
+           ========================================== -->
+      <div class="row g-3 mb-4">
+        <!-- Left: Match Performance Trend (Line Chart) -->
+        <div class="col-lg-8 col-12">
+          <div class="gaming-card h-100">
+            <div class="section-header">
+              <h2 class="section-title">
+                <i class="bi bi-graph-up-arrow"></i> Match Performance & Win Rate Trend
+              </h2>
+              <div class="filter-tab-group" id="chart-time-filter">
+                <button class="filter-tab-btn active" data-period="7d">7 Days</button>
+                <button class="filter-tab-btn" data-period="30d">30 Days</button>
+                <button class="filter-tab-btn" data-period="season">Season 5</button>
+              </div>
+            </div>
+            <div style="position: relative; height: 280px; width: 100%;">
+              <canvas id="performanceChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Time Spent per Genre (Doughnut Chart) -->
+        <div class="col-lg-4 col-12">
+          <div class="gaming-card h-100">
+            <div class="section-header">
+              <h2 class="section-title">
+                <i class="bi bi-pie-chart-fill"></i> Playtime Distribution
+              </h2>
+            </div>
+            <div style="position: relative; height: 250px; width: 100%;" class="d-flex align-items-center justify-content-center">
+              <canvas id="genreChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           6. RECENTLY PLAYED GAMES GRID
+           ========================================== -->
+      <div class="mb-4">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="bi bi-controller"></i> Recently Played Games
+          </h2>
+          <a href="#" class="text-cyan text-decoration-none font-subhead fw-bold" style="font-size: 0.9rem;">
+            VIEW ALL GAMES (14) <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="row g-3" id="recently-played-grid">
+          <!-- Game 1: Cyber Nexus -->
+          <div class="col-lg-3 col-md-6 col-12 game-item-card" data-title="Neon Blaze Cyberpunk Action RPG">
+            <div class="game-card">
+              <div class="game-card-img-wrapper">
+                <img src="assets/images/cyber_nexus.jpg" alt="Neon Blaze Cyberpunk Action RPG" class="game-card-img">
+                <span class="game-genre-tag">ACTION RPG</span>
+              </div>
+              <div class="game-card-body">
+                <div>
+                  <h3 class="game-title">Neon Blaze: Cyberpunk</h3>
+                  <div class="game-meta">
+                    <span><i class="bi bi-clock me-1 text-cyan"></i> 46.5 hrs</span>
+                    <span><i class="bi bi-award me-1 text-amber"></i> 28/35 Achievements</span>
+                  </div>
+                </div>
+                <button class="btn-play-game btn-launch-game" data-game="Neon Blaze: Cyberpunk">
+                  <i class="bi bi-play-circle-fill"></i> LAUNCH GAME
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 2: Arcane Arena -->
+          <div class="col-lg-3 col-md-6 col-12 game-item-card" data-title="Arcane Arena Sci-fi Shooter">
+            <div class="game-card">
+              <div class="game-card-img-wrapper">
+                <img src="assets/images/space_arena.jpg" alt="Arcane Arena Sci-fi Shooter" class="game-card-img">
+                <span class="game-genre-tag">FPS SHOOTER</span>
+              </div>
+              <div class="game-card-body">
+                <div>
+                  <h3 class="game-title">Arcane Arena: Battle Core</h3>
+                  <div class="game-meta">
+                    <span><i class="bi bi-clock me-1 text-cyan"></i> 52.0 hrs</span>
+                    <span><i class="bi bi-award me-1 text-amber"></i> 42/50 Achievements</span>
+                  </div>
+                </div>
+                <button class="btn-play-game btn-launch-game" data-game="Arcane Arena: Battle Core">
+                  <i class="bi bi-play-circle-fill"></i> LAUNCH GAME
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 3: Shadow's Reckoning -->
+          <div class="col-lg-3 col-md-6 col-12 game-item-card" data-title="Shadow's Reckoning Dark Fantasy RPG">
+            <div class="game-card">
+              <div class="game-card-img-wrapper">
+                <img src="assets/images/shadow_realm.jpg" alt="Shadow's Reckoning Dark Fantasy RPG" class="game-card-img">
+                <span class="game-genre-tag">DARK FANTASY</span>
+              </div>
+              <div class="game-card-body">
+                <div>
+                  <h3 class="game-title">Shadow's Reckoning</h3>
+                  <div class="game-meta">
+                    <span><i class="bi bi-clock me-1 text-cyan"></i> 18.2 hrs</span>
+                    <span><i class="bi bi-award me-1 text-amber"></i> 12/40 Achievements</span>
+                  </div>
+                </div>
+                <button class="btn-play-game btn-launch-game" data-game="Shadow's Reckoning">
+                  <i class="bi bi-play-circle-fill"></i> LAUNCH GAME
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game 4: Neon Drift -->
+          <div class="col-lg-3 col-md-6 col-12 game-item-card" data-title="Neon Drift Hover Racing Synthwave">
+            <div class="game-card">
+              <div class="game-card-img-wrapper">
+                <img src="assets/images/quantum_racer.jpg" alt="Neon Drift Hover Racing Synthwave" class="game-card-img">
+                <span class="game-genre-tag">NEON RACER</span>
+              </div>
+              <div class="game-card-body">
+                <div>
+                  <h3 class="game-title">Neon Drift 2099</h3>
+                  <div class="game-meta">
+                    <span><i class="bi bi-clock me-1 text-cyan"></i> 11.7 hrs</span>
+                    <span><i class="bi bi-award me-1 text-amber"></i> 19/20 Achievements</span>
+                  </div>
+                </div>
+                <button class="btn-play-game btn-launch-game" data-game="Neon Drift 2099">
+                  <i class="bi bi-play-circle-fill"></i> LAUNCH GAME
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           7. LEADERBOARD & FRIENDS ACTIVITY TABLE
+           ========================================== -->
+      <div>
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="bi bi-trophy-fill text-amber"></i> Global Season Leaderboard & Squad Status
+          </h2>
+          <div class="search-box" style="width: 220px;">
+            <i class="bi bi-filter"></i>
+            <input type="text" id="leaderboard-filter" class="search-input py-1" style="font-size:0.8rem;" placeholder="Filter squad...">
+          </div>
+        </div>
+
+        <div class="gaming-table-responsive">
+          <table class="gaming-table" id="leaderboard-table">
+            <thead>
+              <tr>
+                <th style="width: 80px;">Rank</th>
+                <th>Player Avatar & Name</th>
+                <th>Competitive Tier</th>
+                <th>Total Rating Points</th>
+                <th>Status</th>
+                <th class="text-end">Squad Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Rank 1 Player -->
+              <tr class="leaderboard-row" data-name="Valkyrie_X">
+                <td>
+                  <div class="rank-badge rank-1">1</div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-wrapper" style="width:36px; height:36px;">
+                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="avatar-img" alt="Player">
+                    </div>
+                    <div>
+                      <div class="fw-bold">Valkyrie_X <span class="badge bg-danger ms-1" style="font-size: 0.65rem;">PRO</span></div>
+                      <div class="text-muted" style="font-size:0.75rem;">Main: Cyber Specialist</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="text-amber font-subhead fw-bold">Grandmaster I</span></td>
+                <td><span class="font-display fw-bold text-white">14,850</span> <span class="text-muted" style="font-size: 0.75rem;">RP</span></td>
+                <td>
+                  <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-50">
+                    <i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i> Online
+                  </span>
+                </td>
+                <td class="text-end">
+                  <button class="btn-squad-action btn-invite-squad" data-player="Valkyrie_X"><i class="bi bi-person-plus-fill me-1"></i> Invite</button>
+                </td>
+              </tr>
+
+              <!-- Rank 2 Player -->
+              <tr class="leaderboard-row" data-name="CyberGhost99">
+                <td>
+                  <div class="rank-badge rank-2">2</div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-wrapper" style="width:36px; height:36px;">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="avatar-img" alt="Player">
+                    </div>
+                    <div>
+                      <div class="fw-bold">CyberGhost99</div>
+                      <div class="text-muted" style="font-size:0.75rem;">Main: Heavy Assault</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="text-cyan font-subhead fw-bold">Diamond I</span></td>
+                <td><span class="font-display fw-bold text-white">12,450</span> <span class="text-muted" style="font-size: 0.75rem;">RP</span></td>
+                <td>
+                  <span class="badge bg-purple bg-opacity-25 text-purple border border-purple border-opacity-50" style="color:var(--neon-purple); background:rgba(168,85,247,0.15);">
+                    <i class="bi bi-controller me-1"></i> In Match (Neon Blaze)
+                  </span>
+                </td>
+                <td class="text-end">
+                  <button class="btn-squad-action btn-invite-squad" data-player="CyberGhost99"><i class="bi bi-eye-fill me-1"></i> Spectate</button>
+                </td>
+              </tr>
+
+              <!-- Rank 3: CURRENT USER (Highlight Row) -->
+              <tr class="leaderboard-row current-user-row" data-name="Alex Vortex YOU">
+                <td>
+                  <div class="rank-badge rank-3">3</div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-wrapper" style="width:36px; height:36px;">
+                      <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=150&auto=format&fit=crop&q=80" class="avatar-img" alt="Player">
+                    </div>
+                    <div>
+                      <div class="fw-bold text-cyan">Alex "Vortex" <span class="badge bg-cyan text-dark font-display ms-1" style="font-size:0.65rem;">YOU</span></div>
+                      <div class="text-muted" style="font-size:0.75rem;">Main: Stealth Operative</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="text-purple font-subhead fw-bold">Diamond II</span></td>
+                <td><span class="font-display fw-bold text-cyan">11,920</span> <span class="text-muted" style="font-size: 0.75rem;">RP</span></td>
+                <td>
+                  <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-50">
+                    <i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i> Active Lobby
+                  </span>
+                </td>
+                <td class="text-end">
+                  <span class="text-cyan font-subhead fw-bold" style="font-size:0.85rem;">CURRENT PLAYER</span>
+                </td>
+              </tr>
+
+              <!-- Rank 4 Player -->
+              <tr class="leaderboard-row" data-name="ShadowSniper">
+                <td>
+                  <div class="rank-badge rank-normal">4</div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-wrapper" style="width:36px; height:36px;">
+                      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" class="avatar-img" alt="Player">
+                    </div>
+                    <div>
+                      <div class="fw-bold">ShadowSniper</div>
+                      <div class="text-muted" style="font-size:0.75rem;">Main: Recon Scout</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="text-purple font-subhead fw-bold">Diamond III</span></td>
+                <td><span class="font-display fw-bold text-white">10,180</span> <span class="text-muted" style="font-size: 0.75rem;">RP</span></td>
+                <td>
+                  <span class="badge bg-secondary bg-opacity-25 text-secondary border border-secondary border-opacity-50">
+                    <i class="bi bi-moon-stars me-1"></i> Offline (2h ago)
+                  </span>
+                </td>
+                <td class="text-end">
+                  <button class="btn-squad-action btn-invite-squad" data-player="ShadowSniper"><i class="bi bi-envelope-fill me-1"></i> Message</button>
+                </td>
+              </tr>
+
+              <!-- Rank 5 Player -->
+              <tr class="leaderboard-row" data-name="NeonRider_99">
+                <td>
+                  <div class="rank-badge rank-normal">5</div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-wrapper" style="width:36px; height:36px;">
+                      <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" class="avatar-img" alt="Player">
+                    </div>
+                    <div>
+                      <div class="fw-bold">NeonRider_99</div>
+                      <div class="text-muted" style="font-size:0.75rem;">Main: Speed Drift Pro</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="text-info font-subhead fw-bold">Platinum I</span></td>
+                <td><span class="font-display fw-bold text-white">9,640</span> <span class="text-muted" style="font-size: 0.75rem;">RP</span></td>
+                <td>
+                  <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-50">
+                    <i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i> Online
+                  </span>
+                </td>
+                <td class="text-end">
+                  <button class="btn-squad-action btn-invite-squad" data-player="NeonRider_99"><i class="bi bi-person-plus-fill me-1"></i> Invite</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ==========================================
+     8. GAME LAUNCHER INTERACTIVE MODAL
+     ========================================== -->
+<div class="modal fade" id="gameLaunchModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-content-gaming">
+      <div class="modal-header modal-header-gaming">
+        <h5 class="modal-title font-display text-white" id="modalGameTitle"><i class="bi bi-controller text-cyan me-2"></i> Launching Game...</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center py-4">
+        <div class="spinner-border text-cyan mb-3" style="width: 3rem; height: 3rem;" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <h4 class="font-subhead text-cyan fw-bold mb-2" id="launchingGameName">Neon Blaze: Cyberpunk</h4>
+        <p class="text-secondary" style="font-size: 0.9rem;">Connecting to GameZone Cloud Servers & Syncing Save State...</p>
+        <div class="progress gaming-progress mt-3 mb-2">
+          <div class="progress-bar bg-cyan progress-bar-striped progress-bar-animated" style="width: 100%;"></div>
+        </div>
+      </div>
+      <div class="modal-footer border-top border-secondary border-opacity-25 justify-content-between">
+        <span class="text-muted" style="font-size: 0.75rem;">Server Region: US-East (12ms ping)</span>
+        <button type="button" class="btn btn-secondary btn-sm font-subhead" data-bs-dismiss="modal">CANCEL LAUNCH</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Alert for Notifications/Actions -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+  <div id="gamingToast" class="toast text-white bg-dark border border-cyan" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-dark text-cyan border-bottom border-secondary border-opacity-25">
+      <i class="bi bi-shield-fill-check me-2"></i>
+      <strong class="me-auto font-display" style="font-size:0.85rem;" id="toastTitle">System Notification</strong>
+      <small class="text-muted">Just now</small>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id="toastMessage">
+      Action executed successfully!
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap 5 JS Bundle CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Custom JavaScript Application -->
+<script src="app.js"></script>
+
+</body>
+</html>
